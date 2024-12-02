@@ -4,7 +4,13 @@ fn main() {
     let (mut left, mut right) = parse_input("input.txt");
     left.sort();
     right.sort();
-    println!("{}", left.iter().zip(&right).map(|(&l, &r)| l.abs_diff(r)).sum::<u32>());
+    println!(
+        "{}",
+        left.iter()
+            .zip(&right)
+            .map(|(&l, &r)| l.abs_diff(r))
+            .sum::<u32>()
+    );
 }
 
 fn parse_input(path: &str) -> (Vec<u32>, Vec<u32>) {
