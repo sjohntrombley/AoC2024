@@ -26,15 +26,8 @@ fn is_safe(report: &[i8]) -> bool {
     if diff == 0 || diff.abs() > 3 {
         return false;
     }
-    let s = sign(&diff);
+    let s = diff.signum();
     diff_iter.all(|d| s * d > 0 && d.abs() < 4)
-}
-
-fn sign(n: &i8) -> i8 {
-    if n == &0 {
-        return 0;
-    }
-    n / n.abs()
 }
 
 fn parse_input(path: &str) -> Vec<Vec<i8>> {
