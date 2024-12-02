@@ -1,9 +1,14 @@
-use std::fs::read_to_string;
 use std::collections::HashMap;
+use std::fs::read_to_string;
 
 fn main() {
     let (left, right) = parse_input("input.txt");
-    println!("{}", left.iter().map(|l| l * right.get(l).unwrap_or(&0)).sum::<u32>());
+    println!(
+        "{}",
+        left.iter()
+            .map(|l| l * right.get(l).unwrap_or(&0))
+            .sum::<u32>()
+    );
 }
 
 fn parse_input(path: &str) -> (Vec<u32>, HashMap<u32, u32>) {
