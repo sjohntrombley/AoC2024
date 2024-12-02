@@ -14,11 +14,7 @@ fn parse_input(path: &str) -> (Vec<u32>, HashMap<u32, u32>) {
         let (left_string, right_string) = line.split_once("   ").unwrap();
         left.push(left_string.parse().unwrap());
         let r = right_string.parse().unwrap();
-        if right.contains_key(&r) {
-            *right.get_mut(&r).unwrap() += 1;
-        } else {
-            right.insert(r, 1);
-        }
+        right.entry(r).and_modify(|count| *count += 1).or_insert(1);
     }
 
     (left, right)
