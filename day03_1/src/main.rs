@@ -9,8 +9,12 @@ fn main() {
             None => break,
         };
         // See if the char in the closure can be removed later
-        let (x, rest) = input.split_at(input.find(|c: char| !c.is_ascii_digit()).unwrap_or(input.len()));
-        let x: u32 = if x.len() == 0 {
+        let (x, rest) = input.split_at(
+            input
+                .find(|c: char| !c.is_ascii_digit())
+                .unwrap_or(input.len()),
+        );
+        let x: u32 = if x.is_empty() {
             continue;
         } else if x.len() < 4 {
             input = rest;
@@ -23,8 +27,12 @@ fn main() {
             Some(s) => s,
             None => continue,
         };
-        let (y, rest) = input.split_at(input.find(|c: char| !c.is_ascii_digit()).unwrap_or(input.len()));
-        let y: u32 = if y.len() == 0 {
+        let (y, rest) = input.split_at(
+            input
+                .find(|c: char| !c.is_ascii_digit())
+                .unwrap_or(input.len()),
+        );
+        let y: u32 = if y.is_empty() {
             continue;
         } else if y.len() < 4 {
             input = rest;
