@@ -20,11 +20,7 @@ fn main() {
         if !ordered {
             for i in 0..update.len() - 1 {
                 let mut j = i + 1;
-                loop {
-                    if j == update.len() {
-                        break;
-                    }
-
+                while j < update.len() {
                     if rules
                         .get(&update[j])
                         .is_some_and(|s| s.contains(&update[i]))
