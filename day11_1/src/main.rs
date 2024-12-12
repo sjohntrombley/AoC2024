@@ -26,14 +26,6 @@ fn main() {
                 processed.push_back(stone * 2024);
             }
         }
-        //{
-        //    use std::io::{Write, stdin, stdout};
-        //    let mut s = String::new();
-        //    println!("{:?}", processed);
-        //    print!("Press enter to continue:");
-        //    stdout().flush().unwrap();
-        //    stdin().read_line(&mut s).unwrap();
-        //}
         (processed, unprocessed) = (unprocessed, processed);
     }
 
