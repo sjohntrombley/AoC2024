@@ -1,0 +1,7 @@
+[package]
+name = "day11_2"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+memoize = "0.4.2"
