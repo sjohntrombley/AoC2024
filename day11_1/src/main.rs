@@ -4,7 +4,6 @@ use std::fs::read_to_string;
 fn main() {
     let mut unprocessed: LinkedList<u64> = read_to_string("input.txt")
         .unwrap()
-        .trim()
         .split_whitespace()
         .map(|s| s.parse().unwrap())
         .collect();
