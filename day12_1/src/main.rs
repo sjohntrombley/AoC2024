@@ -44,9 +44,8 @@ fn main() {
                 let (i, j) = if j < i { (j, i) } else { (i, j) };
                 let regions = plants.get_mut(plant).unwrap();
                 regions[i].insert((r, c));
-                for coord in regions.remove(j) {
-                    regions[i].insert(coord);
-                }
+                let j_region = regions.remove(j);
+                regions[i].extend(&j_region);
                 continue;
             }
 
