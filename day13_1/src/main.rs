@@ -1,11 +1,5 @@
 use std::fs::read_to_string;
-// A_X*A + B_X*B = P_X; A_Y*A + B_Y*B = P_Y
-// A = (P_X - B_X*B)/A_X; A = (P_Y - B_Y*B)/A_Y
-// A_Y*(P_X - B_X*B) = A_X*(P_Y - B_Y*B)
-// A_Y*P_X - A_X*P_Y = (A_Y*B_X - A_X*B_Y)*B
-// B = (P_Y*A_X - P_X*A_Y)/(A_X*B_Y - A_Y*B_X)
-// A = (P_X - B_X*(A_Y*P_X - A_X*P_Y)/(A_Y*B_X - A_X*B_Y))/A_X
-// A = (P_Y*B_X - P_X*B_Y)/(A_Y*B_X - A_X*B_Y)
+
 struct Point {
     x: i32,
     y: i32,
