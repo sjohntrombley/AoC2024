@@ -1,12 +1,18 @@
-use std::fs::read_to_string;
-use std::collections::HashSet;
 use cached::proc_macro::cached;
 use cached::SizedCache;
+use std::collections::HashSet;
+use std::fs::read_to_string;
 
 fn main() {
     let (towels, designs) = parse_input(&read_to_string("input.txt").unwrap());
     let towel_max_len = towels.iter().map(String::len).max().unwrap();
-    println!("{}", designs.iter().filter(|design| is_possible(&towels, towel_max_len, design)).count());
+    println!(
+        "{}",
+        designs
+            .iter()
+            .filter(|design| is_possible(&towels, towel_max_len, design))
+            .count()
+    );
 }
 
 #[cached(
@@ -16,12 +22,12 @@ fn main() {
 )]
 fn is_possible(towels: &HashSet<String>, towel_max_len: usize, design: &str) -> bool {
     if design.is_empty() {
-        return true
+        return true;
     }
 
     for l in (1..=towel_max_len.min(design.len())).rev() {
         if towels.contains(&design[..l]) && is_possible(towels, towel_max_len, &design[l..]) {
-            return true
+            return true;
         }
     }
 
@@ -30,7 +36,12 @@ fn is_possible(towels: &HashSet<String>, towel_max_len: usize, design: &str) -> 
 
 fn parse_input(input: &str) -> (HashSet<String>, Vec<String>) {
     let mut input = input.lines();
-    let towels = input.next().unwrap().split(", ").map(str::to_string).collect();
+    let towels = input
+        .next()
+        .unwrap()
+        .split(", ")
+        .map(str::to_string)
+        .collect();
     input.next();
     let designs = input.map(str::to_string).collect();
 
