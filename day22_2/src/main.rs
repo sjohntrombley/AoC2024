@@ -36,7 +36,7 @@ impl Iterator for SequenceIter {
                     .for_each(|(i, &n)| sequence[i] = n);
                 self.window_start += 1;
                 if !self.checked.contains(&sequence) {
-                    self.checked.insert(sequence.clone());
+                    self.checked.insert(sequence);
                     break;
                 }
             } else {
@@ -61,9 +61,9 @@ fn step_secret(n: &mut Num) {
 fn get_prices(mut n: Num) -> [i8; 2001] {
     let mut prices = [0; 2001];
     prices[0] = (n % 10).try_into().unwrap();
-    for i in 1..2001 {
+    for price in prices.iter_mut() {
         step_secret(&mut n);
-        prices[i] = (n % 10).try_into().unwrap();
+        *price = (n % 10).try_into().unwrap();
     }
 
     prices
